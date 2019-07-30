@@ -1,0 +1,158 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:2:1-23:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/ec4c544e6eb00d1b405a38bcd3b4e407/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/ab51218b3f3ce467d578c74fb9d6dd5c/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/ca498b8fc4d1109d599be899d53b704d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/cba4e4651ba51ba34c745584cb929a5d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/97e192951a0a1244586a3721b7745848/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/df87e8ea5be93fd10c88afaa858c63b1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/6e1fbf431341e85d2cfbd76a63485f17/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/2844a3b688ec7c566b79e788175be07a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/dc00b8cb4d2759be3f6612b423b84c11/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/b477bff3669ecb63bf35ceff9c1881dd/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/a885cf3034042d330bc3c7d1b13a2e5e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/077f37ab722f56336a9997cacd2ceeda/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/de166b63f76f4b9769dae5bdf3a79674/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/305eac65d5d6123b28376d594b655c09/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/3aee164f2fdf4adf504334785053693e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/482519790d210f8e7aff473c8b5197b8/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/707ba3078155fb31414d83aa8cc3f4d0/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/883f2246d6e41ba8450a3607cc06f51c/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/1f5d2f20cfe16bae4ee597558cf31d8b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/604b34a02a12fabe9aaebe7bf96a75eb/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/ac613ea6c9089e1ef218c7a575ec8d00/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/3fcf443adf0dba00b7cdb15d7851264e/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/aa2c816e401d3649c6b7ef5b98173fcb/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/9fb7fd2aea4ddf700e842040bbe8ea33/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/b65a3d3f216c4a2a1efc5b82d5c541de/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/919b284ca54f77bf169e203c1d90e5fd/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/f2bb17d8b363388386d70700c9c95fdf/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:2:1-23:12
+	package
+		ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:3:5-37
+		INJECTED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml
+		ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:2:1-23:12
+		INJECTED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml
+		ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:2:1-23:12
+		INJECTED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:5:5-66
+	android:name
+		ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:5:22-64
+application
+ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:7:5-21:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/ab51218b3f3ce467d578c74fb9d6dd5c/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/ab51218b3f3ce467d578c74fb9d6dd5c/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-compat:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/482519790d210f8e7aff473c8b5197b8/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/482519790d210f8e7aff473c8b5197b8/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/707ba3078155fb31414d83aa8cc3f4d0/AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/707ba3078155fb31414d83aa8cc3f4d0/AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/482519790d210f8e7aff473c8b5197b8/AndroidManifest.xml:22:18-91
+	android:supportsRtl
+		ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:12:9-35
+	android:label
+		ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:10:9-41
+	android:roundIcon
+		ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:11:9-54
+	android:icon
+		ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:9:9-43
+	android:allowBackup
+		ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:8:9-35
+	android:theme
+		ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:13:9-40
+activity#com.example.weatherapp.MainActivity
+ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:14:9-20:20
+	android:name
+		ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:14:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:15:13-19:29
+action#android.intent.action.MAIN
+ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:16:17-69
+	android:name
+		ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:16:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:18:17-77
+	android:name
+		ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml:18:27-74
+uses-sdk
+INJECTED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml
+INJECTED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/ec4c544e6eb00d1b405a38bcd3b4e407/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/ec4c544e6eb00d1b405a38bcd3b4e407/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/ab51218b3f3ce467d578c74fb9d6dd5c/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/ab51218b3f3ce467d578c74fb9d6dd5c/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/ca498b8fc4d1109d599be899d53b704d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/ca498b8fc4d1109d599be899d53b704d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/cba4e4651ba51ba34c745584cb929a5d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/cba4e4651ba51ba34c745584cb929a5d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/97e192951a0a1244586a3721b7745848/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/97e192951a0a1244586a3721b7745848/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/df87e8ea5be93fd10c88afaa858c63b1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/df87e8ea5be93fd10c88afaa858c63b1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/6e1fbf431341e85d2cfbd76a63485f17/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/6e1fbf431341e85d2cfbd76a63485f17/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/2844a3b688ec7c566b79e788175be07a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/2844a3b688ec7c566b79e788175be07a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/dc00b8cb4d2759be3f6612b423b84c11/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/dc00b8cb4d2759be3f6612b423b84c11/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/b477bff3669ecb63bf35ceff9c1881dd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/b477bff3669ecb63bf35ceff9c1881dd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/a885cf3034042d330bc3c7d1b13a2e5e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/a885cf3034042d330bc3c7d1b13a2e5e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/077f37ab722f56336a9997cacd2ceeda/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/077f37ab722f56336a9997cacd2ceeda/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/de166b63f76f4b9769dae5bdf3a79674/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/de166b63f76f4b9769dae5bdf3a79674/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/305eac65d5d6123b28376d594b655c09/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/305eac65d5d6123b28376d594b655c09/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/3aee164f2fdf4adf504334785053693e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/3aee164f2fdf4adf504334785053693e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/482519790d210f8e7aff473c8b5197b8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/482519790d210f8e7aff473c8b5197b8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/707ba3078155fb31414d83aa8cc3f4d0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/707ba3078155fb31414d83aa8cc3f4d0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/883f2246d6e41ba8450a3607cc06f51c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/883f2246d6e41ba8450a3607cc06f51c/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/1f5d2f20cfe16bae4ee597558cf31d8b/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/1f5d2f20cfe16bae4ee597558cf31d8b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/604b34a02a12fabe9aaebe7bf96a75eb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/604b34a02a12fabe9aaebe7bf96a75eb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/ac613ea6c9089e1ef218c7a575ec8d00/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/ac613ea6c9089e1ef218c7a575ec8d00/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/3fcf443adf0dba00b7cdb15d7851264e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/3fcf443adf0dba00b7cdb15d7851264e/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/aa2c816e401d3649c6b7ef5b98173fcb/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/aa2c816e401d3649c6b7ef5b98173fcb/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/9fb7fd2aea4ddf700e842040bbe8ea33/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/9fb7fd2aea4ddf700e842040bbe8ea33/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/b65a3d3f216c4a2a1efc5b82d5c541de/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/b65a3d3f216c4a2a1efc5b82d5c541de/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/919b284ca54f77bf169e203c1d90e5fd/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/919b284ca54f77bf169e203c1d90e5fd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/f2bb17d8b363388386d70700c9c95fdf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/f2bb17d8b363388386d70700c9c95fdf/AndroidManifest.xml:20:5-44
+INJECTED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml
+INJECTED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml
+		ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml
+		ADDED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/britainmackenzie/Downloads/WeatherApp/app/src/main/AndroidManifest.xml
