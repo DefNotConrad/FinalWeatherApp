@@ -1,6 +1,7 @@
 package com.example.weatherapp;
 
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,6 +28,18 @@ public class NetworkUtils {
 
     private final static String API_KEY = "HXkkQq4yAK63PD7DwgbUa8WjYXImyPsA";
     private final static String PARAM_API_KEY = "apikey";
+
+
+
+    @NonNull
+    public static URL apiRequest(String lat, String lng) throws MalformedURLException {
+        StringBuilder sb = new StringBuilder(WEATHERDB_BASE_URL);
+        sb.append(String.format("?lat=%s&lon=s&s&APPID=%s&units+metric",lat,lng,API_KEY));
+
+            URL reqURL = new URL(sb.toString());
+
+        return reqURL;
+    }
 
     /*
      *  Builds URL for API call specifics.
