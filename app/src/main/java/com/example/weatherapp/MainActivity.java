@@ -1,5 +1,15 @@
 package com.example.weatherapp;
 
+import android.Manifest;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.AsyncTask;
@@ -9,8 +19,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.ArrayList;
+
 import java.util.Iterator;
 
 
@@ -21,8 +34,14 @@ import java.util.Iterator;
  *  1. Need to add hourly functionality
  *  2. Need to add location based updates
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LocationListener {
     private static final String TAG = MainActivity.class.getSimpleName();
+
+    LocationManager locationManager;
+    String provider;
+    static double lat, lng;
+
+    int MY_PERMISSION = 0;
 
     /*
      * 5 day weather list.
@@ -46,6 +65,80 @@ public class MainActivity extends AppCompatActivity {
         URL weatherUrl = NetworkUtils.buildUrlForWeather();
         new FetchWeatherDetails().execute(weatherUrl);
         Log.i(TAG, "onCreate: weatherUrl: " + weatherUrl);
+
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        provider = locationManager.getBestProvider(new Criteria(), false);
+
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{
+                Manifest.permission.INTERNET,
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_NETWORK_STATE,
+                    Manifest.permission.SYSTEM_ALERT_WINDOW,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+
+            }, MY_PERMISSION);
+
+        }
+        Location location = locationManager.getLastKnownLocation(provider);
+        if (location == null)
+            Log.e("TAG", "No Location");
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        locationManager.removeUpdates(this);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{
+                    Manifest.permission.INTERNET,
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_NETWORK_STATE,
+                    Manifest.permission.SYSTEM_ALERT_WINDOW,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+
+            }, MY_PERMISSION);
+        }
+        locationManager.requestLocationUpdates(provider, 400, 1, this);
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        lat = location.getLatitude();
+        lng = location.getLongitude();
+
+        try {
+            new FetchWeatherDetails().execute(NetworkUtils.apiRequest(String.valueOf(lat),String.valueOf(lng)));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onStatusChanged(String s, int i, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String s) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String s) {
+
     }
 
     /*
@@ -54,9 +147,14 @@ public class MainActivity extends AppCompatActivity {
      */
     private class FetchWeatherDetails extends AsyncTask<URL, Void, String> {
 
+        ProgressDialog pd = new ProgressDialog(MainActivity.this);
+
         @Override
-        protected void onPreExecute() {
+        protected void onPreExecute()
+        {
             super.onPreExecute();
+            pd.setTitle("Please wait...");
+            pd.show();
         }
 
         /*
@@ -82,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String weatherSearchResults) {
+            pd.dismiss();
             if(weatherSearchResults != null && !weatherSearchResults.equals("")) {
                 weatherArrayList = parseJSON(weatherSearchResults);
                 Iterator itr = weatherArrayList.iterator();
@@ -90,8 +189,8 @@ public class MainActivity extends AppCompatActivity {
                     Weather weatherInIterator = (Weather) itr.next();
                     Log.i(TAG, "onPostExecute: Date: " + weatherInIterator.getDate()+
                             " Min: " + weatherInIterator.getMinTemp() +
-                            " Max: " + weatherInIterator.getMaxTemp() +
-                            " Link: " + weatherInIterator.getLink());
+                            " Max: " + weatherInIterator.getMaxTemp());
+                           // " Link: " + weatherInIterator.getLink());
                 }
             }
             super.onPostExecute(weatherSearchResults);
@@ -128,8 +227,8 @@ public class MainActivity extends AppCompatActivity {
                     weather.setMinTemp(minTemperature);
                     String maxTemperature = temperatureObj.getJSONObject("Maximum").getString("Value");
                     weather.setMaxTemp(maxTemperature);
-                    String link = resultsObj.getString("Link");
-                    weather.setLink(link);
+                   // String link = resultsObj.getString("Link");
+                   // weather.setLink(link);
                     weatherArrayList.add(weather);
                 }
                 if(weatherArrayList != null) {
