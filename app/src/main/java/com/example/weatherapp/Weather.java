@@ -13,8 +13,14 @@ public class Weather {
     String maxTemp;
     String link;
 
+
+
     public String getDate() {
-        return date;
+
+        String newDate = null;
+
+        newDate = Common.getDateNow(date);
+        return newDate;
     }
 
     public void setDate(String date) {
