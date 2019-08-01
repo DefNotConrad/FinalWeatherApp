@@ -11,7 +11,98 @@ public class Weather {
     String date;
     String minTemp;
     String maxTemp;
-    String link;
+    String temp;
+    String sunrise;
+    String sunset;
+    String unit;
+
+    Boolean precipitation;
+    String PrecipType;
+    int precipitationProb;
+    Boolean day;
+
+    String icon;
+    String iconPhrase;
+
+    public String getPrecipType() {
+        return PrecipType;
+    }
+
+    public void setPrecipType(String precipType) {
+        PrecipType = precipType;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public String getIconPhrase() {
+        return iconPhrase;
+    }
+
+    public void setIconPhrase(String iconPhrase) {
+        this.iconPhrase = iconPhrase;
+    }
+
+    public Boolean getPrecipitation() {
+        return precipitation;
+    }
+
+    public void setPrecipitation(Boolean precipitation) {
+        this.precipitation = precipitation;
+    }
+
+    public int getPrecipitationProb() {
+        return precipitationProb;
+    }
+
+    public void setPrecipitationProb(int precipitationProb) {
+        this.precipitationProb = precipitationProb;
+    }
+
+    public Boolean getDay() {
+        return day;
+    }
+
+    public void setDay(Boolean day) {
+        this.day = day;
+    }
+
+    public String getTemp() {
+        return temp;
+    }
+
+    public void setTemp(String currentTemp) {
+        this.temp = currentTemp;
+    }
+
+    public String getSunrise() {
+        return sunrise;
+    }
+
+    public void setSunrise(String sunrise) {
+        this.sunrise = sunrise;
+    }
+
+    public String getSunset() {
+        return sunset;
+    }
+
+    public void setSunset(String sunset) {
+        this.sunset = sunset;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
 
     public String getDate() {
         return date;
@@ -37,11 +128,4 @@ public class Weather {
         this.maxTemp = maxTemp;
     }
 
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
 }
