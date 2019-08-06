@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/item_top_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+
+        android:text="Title"
+        android:textAlignment="center"
+        android:textFontWeight="center"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/item_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:text="High"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/item_high"
+                    android:layout_width="50dp"
+                    android:layout_height="25dp"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="25dp"
+                    android:text="Low:"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/item_low"
+                    android:layout_width="50dp"
+                    android:layout_height="25dp"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="359dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="29dp"
+                android:text="Precip: "
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/item_precip"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:text="" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
