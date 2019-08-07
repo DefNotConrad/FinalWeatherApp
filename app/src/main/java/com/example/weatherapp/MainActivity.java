@@ -20,7 +20,7 @@ import java.util.Iterator;
  *  1.  Need to add location based updates
  */
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = com.example.weatherapp.MainActivity.class.getSimpleName();
 
     private ArrayList<Weather> weatherArrayList = new ArrayList<>();
     //private ArrayList<Weather> dailyArrayList = new ArrayList<>();
@@ -60,9 +60,9 @@ public class MainActivity extends AppCompatActivity {
         hourlyView = findViewById(R.id.hourlyList);
         dailyView = findViewById(R.id.weatherList);
         for(int x=2; x>=0; x--){
-            setKey(0);
+            setKey(x);
             URL weatherUrl = NetworkUtils.buildUrlForWeather(getKey());
-            new FetchWeatherDetails().execute(weatherUrl);
+            new com.example.weatherapp.MainActivity.FetchWeatherDetails().execute(weatherUrl);
             Log.i(TAG, "onCreate: weatherUrl: " + weatherUrl);
         }
     }
@@ -102,46 +102,6 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String weatherSearchResults) {
             if(weatherSearchResults != null && !weatherSearchResults.equals("")) {
                 weatherArrayList = parseJSON(weatherSearchResults);
-                //Iterator itr = dailyArrayList.iterator();
-
-                /*while(itr.hasNext()) {
-                    Weather weatherInIterator = (Weather) itr.next();
-
-                    switch(getKey()){
-                        //daily
-                        case 0:{
-                            Log.i(TAG, "onPostExecute: Date: " + weatherInIterator.getDate()+
-                                    " Min: " + weatherInIterator.getMinTemp() +
-                                    " Max: " + weatherInIterator.getMaxTemp() +
-                                    " Unit: " + weatherInIterator.getUnit() +
-                                    "Icon: " + weatherInIterator.getIcon() +
-                                    "IconPhrase: " + weatherInIterator.getIconPhrase() +
-                                    "HasPrecip: " + weatherInIterator.getPrecipitation());
-                        }
-                        //hourly
-                        case 1:{
-                            Log.i(TAG, "onPostExecute: Date: " + weatherInIterator.getDate()+
-                                    " IsDayLight: " + weatherInIterator.getDay() +
-                                    " Temp: " + weatherInIterator.getTemp()+
-                                    "HasPrecip: " + weatherInIterator.getPrecipitation()+
-                                    "Precip Prob: " +  weatherInIterator.getPrecipitationProb()+
-                                    " Unit: " + weatherInIterator.getUnit() +
-                                    "Icon: " + weatherInIterator.getIcon() +
-                                    "IconPhrase: " + weatherInIterator.getIconPhrase());
-                        }
-                        //current
-                        case 2:{
-                            Log.i(TAG, "onPostExecute: Date: " + weatherInIterator.getDate()+
-                                    " Temp: " + weatherInIterator.getTemp()+
-                                    " Unit: " + weatherInIterator.getUnit() +
-                                    " Metric: " + isMetric() +
-                                    "HasPrecip: " + weatherInIterator.getPrecipitation()+
-                                    "PrecipType: " + weatherInIterator.getPrecipType() +
-                                    "Icon: " + weatherInIterator.getIcon() +
-                                    "IconPhrase: " + weatherInIterator.getIconPhrase());
-                        }
-                    }
-                }*/
             }
             super.onPostExecute(weatherSearchResults);
         }
@@ -173,120 +133,141 @@ public class MainActivity extends AppCompatActivity {
                             String date = resultsObj.getString("Date");
                             weather.setDate(date);
                             JSONObject temperatureObj = resultsObj.getJSONObject("Temperature");
-                            String minTemperature = temperatureObj.getJSONObject("Minimum").getString("Value");
-                            weather.setMinTemp(minTemperature);
-                            String maxTemperature = temperatureObj.getJSONObject("Maximum").getString("Value");
-                            weather.setMaxTemp(maxTemperature);
+                            int minTemperature = temperatureObj.getJSONObject("Minimum").getInt("Value");
+                            weather.setMinTemp(Integer.toString(minTemperature));
                             String unit= temperatureObj.getJSONObject("Minimum").getString("Unit");
                             weather.setUnit(unit);
+                            int maxTemperature = temperatureObj.getJSONObject("Maximum").getInt("Value");
+                            weather.setMaxTemp(Integer.toString(maxTemperature));
                             JSONObject dayObj = resultsObj.getJSONObject("Day");
-                            String icon = dayObj.getString("Icon");
-                            weather.setIcon(icon);
+                            int icon = dayObj.getInt("Icon");
+                            weather.setIcon(Integer.toString(icon));
                             String iconPhrase = dayObj.getString("IconPhrase");
                             weather.setIconPhrase(iconPhrase);
-                            String precip = dayObj.getString("HasPrecipitation");
-                            weather.setPrecipitation(Boolean.parseBoolean(precip));
+                            Boolean precip = dayObj.getBoolean("HasPrecipitation");
+                            weather.setPrecipitation(precip);
                             weather.setKey(key);
 
                             weatherArrayList.add(weather);
-                        }
-                            if(weatherArrayList != null) {
-                                ListAdapter weatherAdapter = new ListAdapter(this, weatherArrayList);
-                                dailyView.setAdapter(weatherAdapter);
-                            }
 
-                            return weatherArrayList;
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                            Log.i(TAG, "onPostExecuteDAILY: Date: " + weather.getDate()+
+                                    " Min: " + weather.getMinTemp() +
+                                    " Max: " + weather.getMaxTemp() +
+                                    " Unit: " + weather.getUnit() +
+                                    "Icon: " + weather.getIcon() +
+                                    "IconPhrase: " + weather.getIconPhrase() +
+                                    "HasPrecip: " + weather.getPrecipitation());
+
+
                         }
+                        if(weatherArrayList != null) {
+                            ListAdapter weatherAdapter = new ListAdapter(this, weatherArrayList);
+                            dailyView.setAdapter(weatherAdapter);
+                        }
+
+                        return weatherArrayList;
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                    //hourly forecast
+                }
+                //hourly forecast
                 case 1: {
                     if(hourlyArrayList != null) {
                         hourlyArrayList.clear();
                     }
                     try {
-                        JSONObject rootObject = new JSONObject(weatherSearchResults);
-                        JSONArray results = rootObject.getJSONArray("HourlyForecasts");
+                        //JSONArray rootObject = new JSONArray(weatherSearchResults);
+                        JSONArray results = new JSONArray(weatherSearchResults);
 
                         for (int i = 0; i < results.length(); i++) {
                             Weather weather = new Weather();
+
                             JSONObject resultsObj = results.getJSONObject(i);
-                            String date = resultsObj.getString("Date");
+                            String date = resultsObj.getString("DateTime");
                             weather.setDate(date);
-                            String day = resultsObj.getString("IsDaylight");
-                            weather.setDay(Boolean.parseBoolean(day));
-                            String precip = resultsObj.getString("HasPrecipitation");
-                            weather.setPrecipitation(Boolean.parseBoolean(precip));
-                            JSONObject temperatureObj = resultsObj.getJSONObject("Temperature");
-                            String temperature = temperatureObj.getString("Value");
-                            weather.setTemp(temperature);
-                            String unit = temperatureObj.getString("Unit");
-                            weather.setUnit(unit);
-                            String precipProb = resultsObj.getString("PrecipitationProbability");
-                            weather.setPrecipitationProb(Integer.parseInt(precipProb));
-                            String icon = resultsObj.getString("WeatherIcon");
-                            weather.setIcon(icon);
+                            int icon = resultsObj.getInt("WeatherIcon");
+                            weather.setIcon(Integer.toString(icon));
                             String iconPhrase = resultsObj.getString("IconPhrase");
                             weather.setIconPhrase(iconPhrase);
+                            Boolean precip = resultsObj.getBoolean("HasPrecipitation");
+                            weather.setPrecipitation(precip);
+                            Boolean day = resultsObj.getBoolean("IsDaylight");
+                            weather.setDay(day);
+                            JSONObject temperatureObj = resultsObj.getJSONObject("Temperature");
+                            int temperature = temperatureObj.getInt("Value");
+                            weather.setTemp(Integer.toString(temperature));
+                            String unit = temperatureObj.getString("Unit");
+                            weather.setUnit(unit);
+                            int precipProb = resultsObj.getInt("PrecipitationProbability");
+                            weather.setPrecipitationProb(precipProb);
+
+
                             weather.setKey(key);
 
                             hourlyArrayList.add(weather);
-                        }
-                            if(hourlyArrayList != null) {
-                                ListAdapter hourlyAdapter = new ListAdapter(this, hourlyArrayList);
-                                hourlyView.setAdapter(hourlyAdapter);
-                            }
 
-                            return hourlyArrayList;
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                            Log.i(TAG, "onPostExecuteHOURLY: Date: " + weather.getDate()+
+                                    " Temp: " + weather.getTemp() +
+                                    " Unit: " + weather.getUnit() +
+                                    "Icon: " + weather.getIcon() +
+                                    "IconPhrase: " + weather.getIconPhrase() +
+                                    "HasPrecip: " + weather.getPrecipitation());
+
                         }
+                        if(hourlyArrayList != null) {
+                            ListAdapter hourlyAdapter = new ListAdapter(this, hourlyArrayList);
+                            hourlyView.setAdapter(hourlyAdapter);
+                        }
+
+                        return hourlyArrayList;
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                    //current forecast
+                }
+                //current forecast
                 case 2: {
                     if(currentArrayList != null) {
                         currentArrayList.clear();
                     }
                     try {
-                        JSONObject rootObject = new JSONObject(weatherSearchResults);
-                        JSONArray results = rootObject.getJSONArray("CurrentForecast");
-
-                        for (int i = 0; i < results.length(); i++) {
+                        JSONArray rootObject = new JSONArray(weatherSearchResults);
+                        JSONObject result = rootObject.getJSONObject(0);
                             Weather weather = new Weather();
-                            JSONObject resultsObj = results.getJSONObject(i);
-                            String date = resultsObj.getString("Date");
+
+                            String date = result.getString("LocalObservationDateTime");
                             weather.setDate(date);
-                            JSONObject temperatureObj = resultsObj.getJSONObject("Temperature");
-                            if(metric){
-                                JSONObject metricObj = temperatureObj.getJSONObject("Metric");
-                                String temp = metricObj.getString("Value");
-                                weather.setTemp(temp);
-                                String unit = metricObj.getString("Unit");
-                                weather.setUnit(unit);
-                            }else{
-                                JSONObject imperialObj = temperatureObj.getJSONObject("Imperial");
-                                String temp = imperialObj.getString("Value");
-                                weather.setTemp(temp);
-                                String unit = imperialObj.getString("Unit");
-                                weather.setUnit(unit);
-                            }
-                            String precip = resultsObj.getString("HasPrecipitation");
-                            weather.setPrecipitation(Boolean.parseBoolean(precip));
-                            String precipType = resultsObj.getString("PrecipitationType");
-                            weather.setPrecipType(precipType);
-                            String icon = resultsObj.getString("WeatherIcon");
-                            weather.setIcon(icon);
-                            String iconPhrase = resultsObj.getString("WeatherText");
-                            weather.setIconPhrase(iconPhrase);
+                            String weatherText = result.getString("WeatherText");
+                            weather.setIconPhrase(weatherText);
+                            int icon = result.getInt("WeatherIcon");
+                            weather.setIcon(Integer.toString(icon));
+                            Boolean precip = result.getBoolean("HasPrecipitation");
+                            weather.setPrecipitation(precip);
+
+                            JSONObject temperatureObj = result.getJSONObject("Temperature");
+
+                            JSONObject imperialObj = temperatureObj.getJSONObject("Imperial");
+                            int temp = imperialObj.getInt("Value");
+                            weather.setTemp(Integer.toString(temp));
+                            String unit = imperialObj.getString("Unit");
+                            weather.setUnit(unit);
+
+
                             weather.setKey(key);
 
                             currentArrayList.add(weather);
-                        }
-                        if (currentArrayList!= null) {
+                            currentArrayList.add(weather);
+
+                        Log.i(TAG, "onPostExecuteCurrent: Date: " + weather.getDate()+
+                                " Temp: " + weather.getTemp() +
+                                " Unit: " + weather.getUnit() +
+                                " Icon: " + weather.getIcon() +
+                                " IconPhrase: " + weather.getIconPhrase() +
+                                " HasPrecip: " + weather.getPrecipitation());
+
+                        /*if (currentArrayList!= null) {
                             ListAdapter currentAdapter = new ListAdapter(this, currentArrayList);
                             listView.setAdapter(currentAdapter);
-                        }
+                        }*/
 
                         return currentArrayList;
                     } catch (JSONException e) {
@@ -298,3 +279,4 @@ public class MainActivity extends AppCompatActivity {
         return null;
     }
 }
+
