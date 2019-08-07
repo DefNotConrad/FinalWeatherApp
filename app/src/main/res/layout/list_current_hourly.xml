@@ -7,7 +7,7 @@
     android:layout_height="75dp">
 
     <ImageView
-        android:id="@+id/current_icon"
+        android:id="@+id/hourly_icon"
         android:layout_width="257dp"
         android:layout_height="75dp"
         android:layout_weight="1"
