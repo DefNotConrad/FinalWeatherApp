@@ -3,8 +3,13 @@ package com.example.weatherapp;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.AsyncTask;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,22 +18,27 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-/*
+/**
+ *
  * The main controller class. Contains the main functionality of the program,
  *  may need to break it into internal classes to match the SRS.
  *
- *  1.  Need to add location based updates
  */
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = com.example.weatherapp.MainActivity.class.getSimpleName();
 
     private ArrayList<Weather> weatherArrayList = new ArrayList<>();
-    //private ArrayList<Weather> dailyArrayList = new ArrayList<>();
-    private ArrayList<Weather> hourlyArrayList = new ArrayList<>();
-    private ArrayList<Weather> currentArrayList = new ArrayList<>();
+    //private ArrayList<Weather> hourlyArrayList = new ArrayList<>();
+    //private ArrayList<Weather> currentArrayList = new ArrayList<>();
     private ListView listView;
-    private ListView dailyView;
+    private ListView topView;
     private ListView hourlyView;
+    //private ListView currentView;
+
+    //private RecyclerView dailyView;
+    //private RecyclerView hourlyView;
+
+
 
     private int key;
     private boolean metric = false;
@@ -47,18 +57,19 @@ public class MainActivity extends AppCompatActivity {
         this.metric = metric;
     }
 
-    /*
+    /**
      * Creates API URL and call, as well as initial view
-     * 1. Need to tie the initial view into current location
+     *
+     * @param savedInstanceState
      *
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.new_layout);
+        setContentView(R.layout.activity_main);
         listView = findViewById(R.id.idListView);
-        hourlyView = findViewById(R.id.hourlyList);
-        dailyView = findViewById(R.id.weatherList);
+        hourlyView = findViewById(R.id.idHourlyView);
+        topView = findViewById(R.id.idTopView);
         for(int x=2; x>=0; x--){
             setKey(x);
             URL weatherUrl = NetworkUtils.buildUrlForWeather(getKey());
@@ -67,9 +78,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /*
-     * API fetch, handles exception if no return. Also builds weather list from return.
+    /**
+     *
+     *API fetch, handles exception if no return. Also builds weather list from return.
      * Now: handles hourly, daily and current
+     *
      */
     private class FetchWeatherDetails extends AsyncTask<URL, Void, String> {
 
@@ -78,8 +91,9 @@ public class MainActivity extends AppCompatActivity {
             super.onPreExecute();
         }
 
-        /*
+        /**
          *  Checks response from URL
+         * @param urls
          */
         @Override
         protected String doInBackground(URL... urls) {
@@ -88,31 +102,46 @@ public class MainActivity extends AppCompatActivity {
             try {
                 weatherSearchResults = NetworkUtils.getResponseFromHttpUrl(weatherUrl);
             } catch (IOException e) {
+
                 e.printStackTrace();
             }
             Log.i(TAG, "doInBackground: weatherSearchResults: " + weatherSearchResults);
             return weatherSearchResults;
         }
 
-        /*
+        /**
+         *
          * Fills weatherArrayLists and displays the values in the log for troubleshooting
-         * 1. Need to adjust based on the information we will be utilizing from API
+         * @params weatherSearchResults
          */
         @Override
         protected void onPostExecute(String weatherSearchResults) {
             if(weatherSearchResults != null && !weatherSearchResults.equals("")) {
                 weatherArrayList = parseJSON(weatherSearchResults);
             }
+            Iterator itr = weatherArrayList.iterator();
+
+            while(itr.hasNext()) {
+                Weather weatherInIterator = (Weather) itr.next();
+                Log.i(TAG, "onPostExecute: Date: " + weatherInIterator.getDate()+
+                        " current " + weatherInIterator.getTemp() +
+                        " Min: " + weatherInIterator.getMinTemp() +
+                        " Max: " + weatherInIterator.getMaxTemp() +
+                        " icon "+ weatherInIterator.getIcon() +
+                        " iconphrase " + weatherInIterator.getIconPhrase() +
+                        " precip " + weatherInIterator.getPrecipType());
+            }
             super.onPostExecute(weatherSearchResults);
         }
     }
 
-    /*
+    /**
      *
      * After checking the return is not null and emptying previous array call:
      * fills a Weather object and adds it to weatherArrayList. Then calls weather adapter
      * to convert it into view object.
      *
+     * @param weatherSearchResults
      */
     private ArrayList<Weather> parseJSON(String weatherSearchResults) {
         if(weatherSearchResults != null) {
@@ -120,13 +149,13 @@ public class MainActivity extends AppCompatActivity {
             switch(getKey()) {
                 //daily
                 case 0:{
-                    if(weatherArrayList != null) {
+                    /*if(weatherArrayList != null) {
                         weatherArrayList.clear();
-                    }
+                    }*/
                     try {
                         JSONObject rootObject = new JSONObject(weatherSearchResults);
                         JSONArray results = rootObject.getJSONArray("DailyForecasts");
-
+                        /*
                         for (int i = 0; i < results.length(); i++) {
                             Weather weather = new Weather();
                             JSONObject resultsObj = results.getJSONObject(i);
@@ -146,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
                             weather.setIconPhrase(iconPhrase);
                             Boolean precip = dayObj.getBoolean("HasPrecipitation");
                             weather.setPrecipitation(precip);
-                            weather.setKey(key);
+                            weather.setKey(0);
 
                             weatherArrayList.add(weather);
 
@@ -157,13 +186,11 @@ public class MainActivity extends AppCompatActivity {
                                     "Icon: " + weather.getIcon() +
                                     "IconPhrase: " + weather.getIconPhrase() +
                                     "HasPrecip: " + weather.getPrecipitation());
-
-
                         }
                         if(weatherArrayList != null) {
-                            ListAdapter weatherAdapter = new ListAdapter(this, weatherArrayList);
-                            dailyView.setAdapter(weatherAdapter);
-                        }
+                            DailyAdapter weatherAdapter = new DailyAdapter(this, weatherArrayList);
+                            listView.setAdapter(weatherAdapter);
+                        }*/
 
                         return weatherArrayList;
                     } catch (JSONException e) {
@@ -172,8 +199,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //hourly forecast
                 case 1: {
-                    if(hourlyArrayList != null) {
-                        hourlyArrayList.clear();
+                    if(weatherArrayList != null) {
+                        weatherArrayList.clear();
                     }
                     try {
                         //JSONArray rootObject = new JSONArray(weatherSearchResults);
@@ -202,9 +229,9 @@ public class MainActivity extends AppCompatActivity {
                             weather.setPrecipitationProb(precipProb);
 
 
-                            weather.setKey(key);
+                            weather.setKey(1);
 
-                            hourlyArrayList.add(weather);
+                            weatherArrayList.add(weather);
 
                             Log.i(TAG, "onPostExecuteHOURLY: Date: " + weather.getDate()+
                                     " Temp: " + weather.getTemp() +
@@ -214,28 +241,31 @@ public class MainActivity extends AppCompatActivity {
                                     "HasPrecip: " + weather.getPrecipitation());
 
                         }
-                        if(hourlyArrayList != null) {
-                            ListAdapter hourlyAdapter = new ListAdapter(this, hourlyArrayList);
+                        if(weatherArrayList != null) {
+                            ListAdapter hourlyAdapter = new ListAdapter(this, weatherArrayList);
                             hourlyView.setAdapter(hourlyAdapter);
                         }
 
-                        return hourlyArrayList;
+                        return weatherArrayList;
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
                 //current forecast
                 case 2: {
-                    if(currentArrayList != null) {
-                        currentArrayList.clear();
+                    if(weatherArrayList != null) {
+                        weatherArrayList.clear();
                     }
                     try {
                         JSONArray rootObject = new JSONArray(weatherSearchResults);
                         JSONObject result = rootObject.getJSONObject(0);
                             Weather weather = new Weather();
 
+
                             String date = result.getString("LocalObservationDateTime");
                             weather.setDate(date);
+
+
                             String weatherText = result.getString("WeatherText");
                             weather.setIconPhrase(weatherText);
                             int icon = result.getInt("WeatherIcon");
@@ -248,14 +278,15 @@ public class MainActivity extends AppCompatActivity {
                             JSONObject imperialObj = temperatureObj.getJSONObject("Imperial");
                             int temp = imperialObj.getInt("Value");
                             weather.setTemp(Integer.toString(temp));
+
+
                             String unit = imperialObj.getString("Unit");
                             weather.setUnit(unit);
 
 
-                            weather.setKey(key);
+                            weather.setKey(2);
 
-                            currentArrayList.add(weather);
-                            currentArrayList.add(weather);
+                            weatherArrayList.add(weather);
 
                         Log.i(TAG, "onPostExecuteCurrent: Date: " + weather.getDate()+
                                 " Temp: " + weather.getTemp() +
@@ -264,12 +295,12 @@ public class MainActivity extends AppCompatActivity {
                                 " IconPhrase: " + weather.getIconPhrase() +
                                 " HasPrecip: " + weather.getPrecipitation());
 
-                        /*if (currentArrayList!= null) {
-                            ListAdapter currentAdapter = new ListAdapter(this, currentArrayList);
-                            listView.setAdapter(currentAdapter);
-                        }*/
+                        if (weatherArrayList!= null) {
+                            WeatherAdapter currentAdapter = new WeatherAdapter(this, weatherArrayList);
+                            topView.setAdapter(currentAdapter);
+                        }
 
-                        return currentArrayList;
+                        return weatherArrayList;
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
