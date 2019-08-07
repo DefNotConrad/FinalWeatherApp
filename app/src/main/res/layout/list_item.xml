@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:text="Low"
-            android:textColor="@color/colorGreen"
+            android:textColor="@color/colorBlue"
             android:textSize="18sp"
             android:textStyle="normal" />
 
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="23"
-            android:textColor="@color/colorGreen"
+            android:textColor="@color/colorBlue"
             android:textSize="18sp"
             android:textStyle="normal" />
 
