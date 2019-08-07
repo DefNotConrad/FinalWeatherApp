@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/britainmackenzie/Downloads/WeatherApp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
+            "outputFile": "C:\\Users\\Quentin\\Downloads\\FinalWeatherApp-appVersionB\\FinalWeatherApp-appVersionB\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "/Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/ec4c544e6eb00d1b405a38bcd3b4e407/res/values-land/values-land.xml",
+                    "source": "C:\\Users\\Quentin\\.gradle\\caches\\transforms-2\\files-2.1\\bd32a7891cfa0472434c05209c2cc9ad\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",

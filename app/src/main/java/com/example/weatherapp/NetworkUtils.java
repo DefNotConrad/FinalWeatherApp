@@ -8,48 +8,40 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
-
 /*
  *
  * Handles network connection, API call.
+ * Now: handles 5-day, hourly(12hrs), and current
  *
  */
 public class NetworkUtils {
     private static final String TAG = "NetworkUtils";
 
-    /*
-     *   1. Need to convert to openweather API url calls and API key
-     *   2. Need to create more for the calls for other functionalities
-     *
-     */
-    private final static String WEATHERDB_BASE_URL=
-            "http://dataservice.accuweather.com/forecasts/v1/daily/5day/351193";
-
+    private final static String WEATHER_URL[]={ "http://dataservice.accuweather.com/forecasts/v1/daily/5day/335932",
+                                                 "http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/335932",
+                                                "http://dataservice.accuweather.com/currentconditions/v1/335932"};
     private final static String API_KEY = "HXkkQq4yAK63PD7DwgbUa8WjYXImyPsA";
     private final static String PARAM_API_KEY = "apikey";
 
     /*
      *  Builds URL for API call specifics.
-     *
-     *  3. Need to add multiple url builds for the different weather display calls (hourly, etc.)
      */
-    public static URL buildUrlForWeather() {
-        Uri builtUri = Uri.parse(WEATHERDB_BASE_URL).buildUpon()
-                .appendQueryParameter(PARAM_API_KEY, API_KEY)
-                .build();
+    public static URL buildUrlForWeather(int x) {
         URL url = null;
-        try {
-            url = new URL(builtUri.toString());
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+            //Daily weather call = 0, hourly =1, current = 2
+
+                    Uri builtUri = Uri.parse(WEATHER_URL[x]).buildUpon()
+                        .appendQueryParameter(PARAM_API_KEY, API_KEY)
+                        .build();
+                try {
+                    url = new URL(builtUri.toString());
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
         Log.i(TAG, "buildUrlForWeather: url: "+url);
         return url;
     }
 
-    /*
-     * 1. Need to change delimeter to match Openweather API, may want to utilize another JSON parser
-     */
     public static String getResponseFromHttpUrl(URL url) throws IOException {
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         try {

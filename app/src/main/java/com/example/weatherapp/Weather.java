@@ -138,5 +138,4 @@ public class Weather {
     public void setMaxTemp(String maxTemp) {
         this.maxTemp = maxTemp;
     }
-
 }
