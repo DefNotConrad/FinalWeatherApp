@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/britainmackenzie/Downloads/WeatherApp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hdpi-v4/values-hdpi-v4.xml",
+            "outputFile": "C:\\Users\\Quentin\\Downloads\\FinalWeatherApp-appVersionB\\FinalWeatherApp-appVersionB\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hdpi-v4\\values-hdpi-v4.xml",
             "map": [
                 {
-                    "source": "/Users/britainmackenzie/.gradle/caches/transforms-2/files-2.1/ec4c544e6eb00d1b405a38bcd3b4e407/res/values-hdpi-v4/values-hdpi-v4.xml",
+                    "source": "C:\\Users\\Quentin\\.gradle\\caches\\transforms-2\\files-2.1\\bd32a7891cfa0472434c05209c2cc9ad\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
