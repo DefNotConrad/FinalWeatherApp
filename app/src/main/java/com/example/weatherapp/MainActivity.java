@@ -28,20 +28,12 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = com.example.weatherapp.MainActivity.class.getSimpleName();
 
     private ArrayList<Weather> weatherArrayList = new ArrayList<>();
-    //private ArrayList<Weather> hourlyArrayList = new ArrayList<>();
-    //private ArrayList<Weather> currentArrayList = new ArrayList<>();
     private ListView listView;
     private ListView topView;
     private ListView hourlyView;
-    //private ListView currentView;
-
-    //private RecyclerView dailyView;
-    //private RecyclerView hourlyView;
-
-
 
     private int key;
-    private boolean metric = false;
+    //private boolean metric = false;
 
     public int getKey() {
         return key;
@@ -50,15 +42,20 @@ public class MainActivity extends AppCompatActivity {
         this.key = key;
     }
 
-    public boolean isMetric() {
+
+    /**
+     * Boolean holders for metric adjustment in settings (Future release)
+     */
+    /*public boolean isMetric() {
         return metric;
     }
     public void setMetric(boolean metric) {
         this.metric = metric;
-    }
+    }*/
 
     /**
-     * Creates API URL and call, as well as initial view
+     * Creates API URL and call, as well as view. Sets top as current forecast,
+     * the middle ListView as hourly forecasts and bottom ListView as daily
      *
      * @param savedInstanceState
      *
@@ -80,20 +77,28 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      *
-     *API fetch, handles exception if no return. Also builds weather list from return.
-     * Now: handles hourly, daily and current
+     * API fetch, utilizing accuweather, handles exception if no return.
+     * Also builds weather list from return.
+     *
      *
      */
     private class FetchWeatherDetails extends AsyncTask<URL, Void, String> {
 
+        /**
+         *
+         * For threading with AsyncTask
+         *
+         */
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
         }
 
         /**
-         *  Checks response from URL
+         *  Gets API response and returns it as a string, logs it and returns exception if no response.
+         *
          * @param urls
+         * @return weatherSearchResults
          */
         @Override
         protected String doInBackground(URL... urls) {
@@ -111,7 +116,8 @@ public class MainActivity extends AppCompatActivity {
 
         /**
          *
-         * Fills weatherArrayLists and displays the values in the log for troubleshooting
+         * Fills weatherArrayList and displays the values in the log for troubleshooting.
+         *
          * @params weatherSearchResults
          */
         @Override
@@ -138,10 +144,14 @@ public class MainActivity extends AppCompatActivity {
     /**
      *
      * After checking the return is not null and emptying previous array call:
-     * fills a Weather object and adds it to weatherArrayList. Then calls weather adapter
-     * to convert it into view object.
+     * Parses a JSON file in string form and fills a Weather object with values.
+     * It then adds that Weather object to weatherArrayList.
+     * Then calls weather adapter to convert it into view object.
+     *
+     * Currently can only display either hourly or daily forecasts at a single time.
      *
      * @param weatherSearchResults
+     * @return weatherArrayList
      */
     private ArrayList<Weather> parseJSON(String weatherSearchResults) {
         if(weatherSearchResults != null) {
@@ -176,7 +186,9 @@ public class MainActivity extends AppCompatActivity {
                             Boolean precip = dayObj.getBoolean("HasPrecipitation");
                             weather.setPrecipitation(precip);
                             weather.setKey(0);
+
                             weatherArrayList.add(weather);
+
                             Log.i(TAG, "onPostExecuteDAILY: Date: " + weather.getDate()+
                                     " Min: " + weather.getMinTemp() +
                                     " Max: " + weather.getMaxTemp() +
@@ -257,34 +269,34 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         JSONArray rootObject = new JSONArray(weatherSearchResults);
                         JSONObject result = rootObject.getJSONObject(0);
-                        Weather weather = new Weather();
+                            Weather weather = new Weather();
 
 
-                        String date = result.getString("LocalObservationDateTime");
-                        weather.setDate(date);
+                            String date = result.getString("LocalObservationDateTime");
+                            weather.setDate(date);
 
 
-                        String weatherText = result.getString("WeatherText");
-                        weather.setIconPhrase(weatherText);
-                        int icon = result.getInt("WeatherIcon");
-                        weather.setIcon(Integer.toString(icon));
-                        Boolean precip = result.getBoolean("HasPrecipitation");
-                        weather.setPrecipitation(precip);
+                            String weatherText = result.getString("WeatherText");
+                            weather.setIconPhrase(weatherText);
+                            int icon = result.getInt("WeatherIcon");
+                            weather.setIcon(Integer.toString(icon));
+                            Boolean precip = result.getBoolean("HasPrecipitation");
+                            weather.setPrecipitation(precip);
 
-                        JSONObject temperatureObj = result.getJSONObject("Temperature");
+                            JSONObject temperatureObj = result.getJSONObject("Temperature");
 
-                        JSONObject imperialObj = temperatureObj.getJSONObject("Imperial");
-                        int temp = imperialObj.getInt("Value");
-                        weather.setTemp(Integer.toString(temp));
-
-
-                        String unit = imperialObj.getString("Unit");
-                        weather.setUnit(unit);
+                            JSONObject imperialObj = temperatureObj.getJSONObject("Imperial");
+                            int temp = imperialObj.getInt("Value");
+                            weather.setTemp(Integer.toString(temp));
 
 
-                        weather.setKey(2);
+                            String unit = imperialObj.getString("Unit");
+                            weather.setUnit(unit);
 
-                        weatherArrayList.add(weather);
+
+                            weather.setKey(2);
+
+                            weatherArrayList.add(weather);
 
                         Log.i(TAG, "onPostExecuteCurrent: Date: " + weather.getDate()+
                                 " Temp: " + weather.getTemp() +
@@ -308,3 +320,4 @@ public class MainActivity extends AppCompatActivity {
         return null;
     }
 }
+
