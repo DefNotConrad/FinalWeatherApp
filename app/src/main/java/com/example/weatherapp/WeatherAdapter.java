@@ -11,33 +11,37 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
-/*
- *  View class that fills list of 5 days weather from API call
- */
 public class WeatherAdapter extends ArrayAdapter<Weather>{
+
     public WeatherAdapter(@NonNull Context context, ArrayList<Weather> weatherArrayList) {
         super(context, 0, weatherArrayList);
     }
 
-    /*
-     *  View class. Gets and fills views with API info
-     */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         Weather weather = getItem(position);
-        if(convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
-        }
-        TextView dateTextView = convertView.findViewById(R.id.tvDate);
-        TextView minTextView = convertView.findViewById(R.id.tvLowTemperature);
-        TextView maxTextView = convertView.findViewById(R.id.tvHighTemperature);
-        TextView linkTextView = convertView.findViewById(R.id.tvLink);
-        dateTextView.setText(weather.getDate());
-        minTextView.setText(weather.getMinTemp());
-        maxTextView.setText(weather.getMaxTemp());
-        linkTextView.setText(weather.getLink());
+        int key = weather.getKey();
+
+    
+        String current = "Currently: ";
+        String degree = "°";
+        String currentText = current + weather.getTemp() + degree;
+   
+
+
+        /**
+         * adds current values to listView
+         */
+
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.top_view, parent, false);
+            TextView dateTextView = convertView.findViewById(R.id.current_date);
+            TextView tempTextView = convertView.findViewById(R.id.current_temp);
+            TextView weatherText = convertView.findViewById(R.id.condition);
+            dateTextView.setText(weather.getDate());
+            tempTextView.setText(currentText);
+            weatherText.setText(weather.getIconPhrase());
+       
         return convertView;
     }
 }
